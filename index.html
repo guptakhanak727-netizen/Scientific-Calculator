@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Scientific Calculator (No JS)</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .calculator { background: #333; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); width: 320px; }
+        .display { width: 100%; height: 50px; background: #222; color: #fff; font-size: 1.5em; text-align: right; padding: 10px; box-sizing: border-box; margin-bottom: 15px; border: none; border-radius: 5px; }
+        .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+        button { padding: 15px; font-size: 1em; background: #444; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #555; }
+        button.operador { background: #f39c12; }
+        button.clear { background: #e74c3c; }
+        button.equals { background: #27ae60; grid-column: span 2; }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <form method="POST">
+        <!-- Persistent expression tracking -->
+        <input type="text"
+       class="display"
+       value="{% if result and result != 'Error' %}{{ result }}{% else %}{{ expression }}{% endif %}"
+       readonly>
+
+<input type="hidden" name="expression" value="{{ expression }}">
+        
+        <!-- Hidden input to keep tracking full string if needed -->
+        <input type="hidden" name="expression" value="{{ expression }}">
+
+        <div class="buttons">
+            <button type="submit" name="button" value="C" class="clear">C</button>
+            <button type="submit" name="button" value="sqrt">(</button>
+            <button type="submit" name="button" value="sqrt">)</button>
+            <button type="submit" name="button" value="/" class="operador">/</button>
+
+            <button type="submit" name="button" value="sin">sin</button>
+            <button type="submit" name="button" value="cos">cos</button>
+            <button type="submit" name="button" value="tan">tan</button>
+            <button type="submit" name="button" value="*" class="operador">*</button>
+
+            <button type="submit" name="button" value="7">7</button>
+            <button type="submit" name="button" value="8">8</button>
+            <button type="submit" name="button" value="9">9</button>
+            <button type="submit" name="button" value="-" class="operador">-</button>
+
+            <button type="submit" name="button" value="4">4</button>
+            <button type="submit" name="button" value="5">5</button>
+            <button type="submit" name="button" value="6">6</button>
+            <button type="submit" name="button" value="+" class="operador">+</button>
+
+            <button type="submit" name="button" value="1">1</button>
+            <button type="submit" name="button" value="2">2</button>
+            <button type="submit" name="button" value="3">3</button>
+            <button type="submit" name="button" value="sqrt">√</button> <!-- placeholder layout -->
+ 
+            <button type="submit" name="button" value="0">0</button>
+            <button type="submit" name="button" value=".">.</button>
+            <button type="submit" name="button" value="pi">π</button>
+            <button type="submit" name="button" value="=" class="equals">=</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
